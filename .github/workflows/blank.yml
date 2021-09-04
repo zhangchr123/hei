@@ -1,0 +1,15 @@
+name: "Check for website health and title text"
+
+on: [push]
+
+jobs:
+  health_check_job:
+    runs-on: ubuntu-latest
+    name: Check for status 200 and title text "wait"
+    steps:
+      - uses: actions/checkout@v2
+      - id: test
+        uses: johnlokerse/website-healthcheck@v2
+        with:
+          web-url: "https://silk-jet-lark.glitch.me"
+          scan-for-text: "lokerse.dev"
